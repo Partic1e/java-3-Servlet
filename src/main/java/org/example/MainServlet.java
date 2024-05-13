@@ -7,42 +7,39 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import service.FileManager;
 import java.io.*;
-import model.User;
-import service.AuthService;
 import service.Utility;
 
 @WebServlet(urlPatterns = {"/Manager"})
 public class MainServlet extends HttpServlet {
+
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
         String login = (String) request.getSession().getAttribute("login");
         String password = (String) request.getSession().getAttribute("password");
         String email = (String) request.getSession().getAttribute("email");
 
-        User user = AuthService.GetUser(login, password);
-
-        if(user == null) {
-            if(login!= null) {
-                AuthService.CreateUser(new User(login, password, email));
-            }
-            else {
-                response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Login"));
-                return;
-            }
+        if (login == null && password == null ) {
+            response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Login"));
+            return;
         }
 
         String currentPath = request.getParameter("path");
 
-        if(currentPath == null) {
+        if(currentPath == null)
+        {
             currentPath = "C:/Users/IgorL/java/";
         }
 
-        if (!currentPath.contains("..")) {
-            if(!Utility.IsCorrectFolderForUser(login, currentPath)) {
+        if (!currentPath.contains(".."))
+        {
+            if(!Utility.IsCorrectFolderForUser(login, currentPath))
+            {
                 currentPath = Utility.GetCorrectRouteForFolder(login);
             }
         }
-        else {
+        else
+        {
             currentPath = Utility.GetCorrectRouteForFolder(login);
         }
 
