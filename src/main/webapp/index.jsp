@@ -1,17 +1,21 @@
 <%--
   Created by IntelliJ IDEA.
   User: IgorL
-  Date: 10.03.2024
-  Time: 13:29
+  Date: 17.03.2024
+  Time: 22:25
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
-    <a href="http://localhost:8080/lab_3_Servlet_war_exploded/Manager?path=C://">Перейти на диск C:/</a>
+    <title>My Application</title>
 </head>
 <body>
-
+<br/>
+<a href="Login.jsp">Вход</a>
+<br/>
+<a href="Register.jsp">Регистрация</a>
+<br/>
 </body>
 </html>

@@ -13,7 +13,7 @@ import java.net.URLEncoder;
 
 @WebServlet(urlPatterns = {"/Download"})
 public class DownloadServlet extends HttpServlet {
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String filePath = request.getParameter("path");
 
@@ -37,8 +37,5 @@ public class DownloadServlet extends HttpServlet {
             inputStream.close();
             outputStream.close();
         }
-    }
-
-    public void destroy() {
     }
 }
